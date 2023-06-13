@@ -12,6 +12,8 @@
     "style:check": "yarn style --check",
     "style:format": "yarn style --write",
     "test": "node --expose-gc --no-compilation-cache ./node_modules/jest/bin/jest --logHeapUsage",
+    "test:pw": "playwright test",
+    "test:pw:ui": "playwright test --ui",
     "test:ci": "yarn test --maxWorkers=100%",
     "types:check": "tsc --pretty --noEmit",
     "pre:commit": "lint-staged",
@@ -39,6 +41,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@playwright/test": "^1.35.0",
     "@testing-library/dom": "^8.14.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
