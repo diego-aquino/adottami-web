@@ -80,7 +80,14 @@ const Header: FC<Props> = ({ avatarPhoto = profile }) => {
                       <Link href="#" className="text-lg font-medium">
                         <a className="ml-2.5 text-lg font-medium text-neutral-800">{singleName()}</a>
                       </Link>
-                      <CaretDown size={20} className="hover:text-secondary-medium" onMouseOver={handleMouseOver} />
+                      <button
+                        type="button"
+                        aria-label="Abrir menu do usuário"
+                        onFocus={handleMouseOver}
+                        onMouseOver={handleMouseOver}
+                      >
+                        <CaretDown size={20} className="hover:text-secondary-medium" />
+                      </button>
                     </div>
                     {isHovering && <CardMenuDesktop mouseOut={handleMouseOut} />}
                   </li>
