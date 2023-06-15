@@ -33,8 +33,7 @@ test.describe('Home page', () => {
     await page.getByRole('textbox', { name: 'Senha' }).fill(password);
     await page.getByRole('button', { name: 'Entrar' }).click();
 
-    await page.goto('/');
-
+    await page.waitForURL('/');
     const userNameLink = page.getByRole('link', { name: user.name() });
     await expect(userNameLink).toBeVisible();
   });
@@ -46,8 +45,7 @@ test.describe('Home page', () => {
     await page.getByRole('textbox', { name: 'Senha' }).fill(password);
     await page.getByRole('button', { name: 'Entrar' }).click();
 
-    await page.goto('/');
-
+    await page.waitForURL('/');
     const userNameLink = page.getByRole('link', { name: user.name() });
     await expect(userNameLink).toBeVisible();
 

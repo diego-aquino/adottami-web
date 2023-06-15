@@ -31,7 +31,7 @@ describe('Home page', () => {
     cy.get('input[name=password]').type(password);
     cy.get('button').contains('Entrar').click();
 
-    cy.visit('/');
+    cy.location('pathname').should('equal', '/');
     cy.get('a').contains(user.name()).should('be.visible');
   });
 
@@ -42,12 +42,11 @@ describe('Home page', () => {
     cy.get('input[name=password]').type(password);
     cy.get('button').contains('Entrar').click();
 
-    cy.visit('/');
+    cy.location('pathname').should('equal', '/');
     cy.get('a').contains(user.name()).should('be.visible');
 
     cy.get('button[aria-label="Abrir menu do usuário"]').trigger('mouseover');
     cy.get('a').contains('Sair').click();
-    cy.wait(1000);
 
     cy.get('a').contains('Entrar').should('be.visible');
   });
