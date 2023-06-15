@@ -1,9 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { AxiosError } from 'axios';
 
 import createUser from '@/models/user/__tests__/factories/user-factory';
-import User from '@/models/user/user';
 import AdottamiClient from '@/services/adottami-client/adottami-client';
+import { saveUserIfNecessary } from '@tests/utils/e2e/users';
 
 test.describe('Home page', () => {
   const adottami = new AdottamiClient(null);
@@ -59,23 +58,3 @@ test.describe('Home page', () => {
     await expect(signInLink).toBeVisible();
   });
 });
-
-async function saveUserIfNecessary(adottami: AdottamiClient, user: User, password: string) {
-  try {
-    await adottami.users.create({
-      name: user.name(),
-      email: user.email(),
-      password,
-      phoneNumber: user.phoneNumber()!,
-    });
-  } catch (error) {
-    handleUserCreationError(error);
-  }
-}
-
-function handleUserCreationError(error: unknown) {
-  const isUserAlreadyExistsError = error instanceof AxiosError && error.response?.status === 400;
-  if (!isUserAlreadyExistsError) {
-    throw error;
-  }
-}

@@ -1,6 +1,6 @@
 import axios, { AxiosError, AxiosInstance } from 'axios';
 
-import globalConfig from '@/config/global-config/global-config';
+import { GlobalConfig } from '@/config/global-config/global-config';
 
 import { HTTPResponseCode } from '../types';
 import PublicationClient from './publication-client/publication-client';
@@ -26,6 +26,7 @@ class AdottamiClient {
     this.authentication = authentication ? { ...authentication } : null;
     this.listeners = options.listeners ? { ...options.listeners } : {};
 
+    const globalConfig = new GlobalConfig();
     const baseURL = globalConfig.baseAdottamiURL();
     this.api = this.createAPIInstance(baseURL);
 

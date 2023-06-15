@@ -3,6 +3,6 @@ declare namespace NodeJS {
 
   interface ProcessEnv {
     readonly NODE_ENV?: Mode;
-    readonly NEXT_PUBLIC_ADOTTAMI_URL: string;
+    NEXT_PUBLIC_ADOTTAMI_URL: string;
   }
 }

@@ -15,3 +15,4 @@
 # configuration
 /tailwind.config.js
 /playwright.config.ts
+/cypress.config.ts

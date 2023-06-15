@@ -22,7 +22,9 @@ const CardMenuDesktop: FC<CardMenuDesktopProps> = ({ mouseOut }) => {
   const handleLogout = async () => {
     try {
       await logout();
-      router.push('/');
+      if (router.pathname !== '/') {
+        router.push('/');
+      }
     } catch (error) {
       if (!(error instanceof AxiosError)) throw error;
       if (error.response?.status === 400) {
